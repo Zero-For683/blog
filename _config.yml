@@ -11,7 +11,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-masthead_title: "Gabriel Barbir"
+masthead_title: "Gabriel"
 breadcrumbs: true
 
 # Enable header nav and point it at the "main" menu below
@@ -29,4 +29,5 @@ author:
     - label: "GitHub"
       icon: "fab fa-github"
       url: "https://github.com/ZeroFor-683"
+
 
