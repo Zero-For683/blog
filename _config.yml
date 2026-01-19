@@ -18,14 +18,6 @@ breadcrumbs: true
 header:
   nav: main
 
-# The actual nav items
-main:
-  - title: "Writeups"
-    url: /categories/
-  - title: "Projects"
-    url: /projects/
-  - title: "About"
-    url: /about/
 
 author:
   name: "Gabriel Barbir"
@@ -37,3 +29,4 @@ author:
     - label: "GitHub"
       icon: "fab fa-github"
       url: "https://github.com/ZeroFor-683"
+
