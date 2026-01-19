@@ -12,10 +12,3 @@ header:
     - label: "GitHub"
       url: "https://github.com/ZeroFor-683"
 ---
-## Featured
-
-- **Detection Engineering:** RDP brute-force detection + tuning
-- **SOC Investigation:** PCAP/log triage → timeline → root cause
-- **Offensive → Defensive:** exploit path + detections + mitigations
-
-## Recent Posts
