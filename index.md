@@ -2,7 +2,7 @@
 layout: splash
 author_profile: true
 title: "Cybersecurity Writeups & Projects"
-excerpt: "Detection engineering • Threat hunting • Incident response • Offensive security"
+excerpt: "Blue teaming • Threat hunting • Incident response • Offensive security"
 header:
   overlay_color: "#000"
   overlay_filter: "0.6"
