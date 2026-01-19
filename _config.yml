@@ -6,6 +6,14 @@ minimal_mistakes_skin: dark
 remote_theme: "mmistakes/minimal-mistakes@4.26.2"
 
 
+masthead_title: "Gabriel Barbir"
+
+defaults:
+  - scope:
+    path: ""
+  values:
+      masthead: true
+
 author:
   name: "Gabriel Barbir"
   bio: "Cybersecurity Analyst | OSCP | Threat Hunting & Detection"
@@ -29,14 +37,15 @@ masthead_title: "Gabriel Barbir"
 breadcrumbs: true
 
 header:
-  nav: true
+  nav: main
 
-navigation:
+main:
   - title: "Writeups"
     url: /categories/
   - title: "Projects"
     url: /projects/
   - title: "About"
     url: /about/
+
 
 
