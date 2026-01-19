@@ -12,3 +12,12 @@ header:
     - label: "GitHub"
       url: "https://github.com/Zero-For683"
 ---
+
+
+{% include feature_row id="intro" type="center" %}
+{% include paginator.html %}
+
+## Recent Posts
+{% for post in site.posts limit:5 %}
+- [{{ post.title }}]({{ post.url }})
+{% endfor %}
