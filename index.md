@@ -3,8 +3,6 @@ layout: home
 author_profile: true
 ---
 
-## About Me
-
 https://www.linkedin.com/in/gabriel-barbir/
 
 I’m a cybersecurity analyst with hands-on experience across SOC operations, threat hunting, and offensive security. I hold the Offensive Security Certified Professional (OSCP) certification and currently work through an intensive apprenticeship focused on building and operating security capabilities in simulated enterprise environments. I also maintain an active Secret clearance.
