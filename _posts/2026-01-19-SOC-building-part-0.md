@@ -8,11 +8,13 @@ toc: "true"
 toc_sticky: "true"
 ---
 
-# Building a SOC from Scratch
+## What this project is
 
 This series documents one of the largest projects I’ve worked on during my `RapidAscent` apprenticeship: designing and building a Security Operations Center from the ground up.
 
 The premise is simple on paper—_“build a SOC”_—but the work quickly moves beyond tools and dashboards. Instead of starting with alerts, we start with the business. My team and I created a fictional organization, defined its mission, and worked through what actually needs to be protected. From there, every decision flows forward: systems selection, threat modeling, architecture, and security controls.
+
+## How we approached it
 
 Across the project, I rotated through multiple perspectives you’d see in a real SOC:
 
@@ -20,7 +22,11 @@ Across the project, I rotated through multiple perspectives you’d see in a rea
 - like an engineer when designing detection and architecture,
 - and like a security lead when balancing risk, documentation, and operational tradeoffs.
 
+## The environment we worked in
+
 We deliberately worked in an imperfect environment. That meant mixed operating systems, a Windows 10 endpoint, and a designated legacy system—because real SOCs rarely defend clean, modern networks. This forced us to deal with risk realistically, not theoretically.
+
+## How the project is structured
 
 Each stage of the project builds on the last:
 
@@ -29,6 +35,8 @@ Each stage of the project builds on the last:
 - modeling threats and prioritizing risk,
 - designing logical and network architectures,
 - and planning security controls before anything is deployed.
+
+# What this series will cover
 
 This blog isn’t a step-by-step tutorial or a tool review. It’s a record of _how decisions were made_, what tradeoffs mattered, and how offensive and defensive thinking intersect when you’re responsible for defending an environment. My goal is to show how I think as a SOC analyst and security engineer—not just what I can configure.
 
