@@ -13,8 +13,6 @@ With threats and risks identified, the next step is to translate that analysis i
 
 The goal is to ensure the environment is intentionally segmented, monitored, and defensible before any systems are deployed.
 
----
-
 ## Network Architecture Overview
 
 The network architecture is designed to clearly illustrate:
@@ -23,9 +21,7 @@ The network architecture is designed to clearly illustrate:
 - IP ranges, subnets, VLANs, routing, and firewall placement  
 - Allowed ports and how traffic flows between systems  
 
-![Network Architecture Diagram](zz-misc-image-folder/Network-Diagram.drawio.png)
-
----
+![Network Architecture Diagram](assets/images/Network-Diagram.drawio.png)
 
 ## Architecture Breakdown
 
@@ -38,8 +34,6 @@ Internally, this workstation is permitted limited outbound and inbound communica
 
 Importantly, this system has **no access** to the `Tryton` administrative interface, reducing the risk of privilege escalation from an exposed endpoint.
 
----
-
 ## SIEM (`Wazuh`) Access Model
 
 The SIEM is treated as a critical security asset and is tightly restricted. As a headless Linux server, it does not require RDP access. The only accepted inbound connections are:
@@ -49,8 +43,6 @@ The SIEM is treated as a critical security asset and is tightly restricted. As a
 - **Kerberos** interactions for authentication  
 
 All other inbound connections are denied by default.
-
----
 
 ## Application and Database Communication
 
@@ -64,8 +56,6 @@ The **Windows Server hosting PostgreSQL** permits inbound and outbound traffic e
 - Kerberos authentication  
 - PostgreSQL database services  
 - `Wazuh` agent communication  
-
----
 
 ## Shared Services
 
