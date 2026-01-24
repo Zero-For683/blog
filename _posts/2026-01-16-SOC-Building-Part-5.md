@@ -15,8 +15,6 @@ This stage is the final checkpoint before implementation. The goal is to make su
 
 At this point, the focus shifts to hardening systems, defining access boundaries, protecting data, and ensuring visibility through logging and monitoring. Everything here is meant to reduce attack surface, limit blast radius, and give the SOC the ability to detect and respond quickly.
 
----
-
 ## Baseline Security Approach
 
 Before touching applications, we start with the operating systems themselves.
@@ -27,8 +25,6 @@ Before touching applications, we start with the operating systems themselves.
 - Ensure firewalling, logging, and endpoint protections are enabled  
 
 Once systems are hardened, access control becomes the next priority.
-
----
 
 ## Access Control Design
 
@@ -54,8 +50,6 @@ Key rules:
 
 This structure ensures that no single role has unnecessary control over multiple critical systems.
 
----
-
 ## Database Security Controls
 
 Database protections are treated as a first-class concern.
@@ -66,8 +60,6 @@ Database protections are treated as a first-class concern.
 - No direct user access outside DBA responsibilities  
 
 This limits exposure even if an application or endpoint is compromised.
-
----
 
 ## Patching & Maintenance Strategy
 
@@ -81,8 +73,6 @@ Operating systems still require direct attention:
 Routine vulnerability scans (e.g., Nessus, Metasploit) are used to identify known issues.  
 - High CVSS vulnerabilities are addressed immediately  
 - Lower-risk findings are prioritized and remediated case-by-case  
-
----
 
 ## Initial SIEM Use Cases
 
@@ -112,8 +102,6 @@ This use case focuses on early indicators of account abuse.
 - Correlate activity across endpoints and servers  
 - Escalate if failures are followed by a successful login  
 
----
-
 ### Privilege Escalation or Admin Group Changes
 
 This use case targets high-impact changes that could signal compromise or insider misuse.
@@ -134,8 +122,6 @@ This use case targets high-impact changes that could signal compromise or inside
 - Administrative activity occurring during unusual hours  
 
 These alerts give the SOC immediate visibility into actions that could fundamentally change system trust.
-
----
 
 ## Closing Thoughts
 
